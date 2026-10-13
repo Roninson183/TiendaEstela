@@ -88,10 +88,10 @@ async function cargarProductosDesdeSheets() {
 
             const preciosHTML = tieneOferta 
                 ? `<div class="precios">
-                    <span class="precio-tachado">$${precioRaw.toFixed(2)}</span>
-                    <span class="precio-actual">$${precioFinal.toFixed(2)}</span>
+                    <span class="precio-tachado">S/ ${precioRaw.toFixed(2)}</span>
+                    <span class="precio-actual">S/ ${precioFinal.toFixed(2)}</span>
                    </div>`
-                : `<p class="precio-actual">$${precioFinal.toFixed(2)}</p>`;
+                : `<p class="precio-actual">S/ ${precioFinal.toFixed(2)}</p>`;
 
             const botonHTML = esAgotado 
                 ? '<button class="btn-accion" disabled>No disponible</button>' 
@@ -199,7 +199,7 @@ function actualizarCarritoUI() {
                 <div class="item-carrito">
                     <div class="info-item">
                         <span>✔️ ${item.nombre}</span>
-                        <strong>$${item.precio.toFixed(2)}</strong>
+                        <strong>S/ ${item.precio.toFixed(2)}</strong>
                     </div>
                     <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})" title="Eliminar producto">🗑</button>
                 </div>
@@ -208,7 +208,7 @@ function actualizarCarritoUI() {
     }
     
     if (total < 0) total = 0;
-    totalPrecio.innerText = `$${total.toFixed(2)}`;
+    totalPrecio.innerText = `S/ ${total.toFixed(2)}`;
 }
 
 function abrirCarrito(e) {
@@ -243,10 +243,10 @@ function procesarCompra() {
     let textoMensaje = `¡Hola ESTELA! Soy ${nombre} ${apellido} (Cel: ${celular}).\nQuiero concretar la compra de mi carrito:\n\n`;
     
     carrito.forEach(item => {
-        textoMensaje += `👗 ${item.nombre}: $${item.precio.toFixed(2)}\n`;
+        textoMensaje += `👗 ${item.nombre}: S/ ${item.precio.toFixed(2)}\n`;
     });
     
-    textoMensaje += `\n💰 *Total a pagar: $${total.toFixed(2)}*\n\n¿A qué cuenta realizo el depósito?`;
+    textoMensaje += `\n💰 *Total a pagar: S/ ${total.toFixed(2)}*\n\n¿A qué cuenta realizo el depósito?`;
 
     const url = `https://api.whatsapp.com/send?phone=${numeroTienda}&text=${encodeURIComponent(textoMensaje)}`;
     
@@ -297,15 +297,15 @@ function validarAccesoAdmin() {
 
 let totalVentasFisicas = 0;
 function registrarVentaFisica() {
-    const monto = prompt("Ingresa el monto cobrado en la tienda física ($):");
+    const monto = prompt("Ingresa el monto cobrado en la tienda física (S/):");
     if (monto && !isNaN(monto)) {
         totalVentasFisicas += parseFloat(monto);
         const historial = document.getElementById('historial-ventas-fisicas');
         const hora = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         
         if (historial) {
-            historial.innerHTML += `<div>💵 Venta $${parseFloat(monto).toFixed(2)} - ${hora}</div>`;
+            historial.innerHTML += `<div>💵 Venta S/ ${parseFloat(monto).toFixed(2)} - ${hora}</div>`;
         }
-        alert(`Venta registrada. Total acumulado en caja física: $${totalVentasFisicas.toFixed(2)}`);
+        alert(`Venta registrada. Total acumulado en caja física: S/ ${totalVentasFisicas.toFixed(2)}`);
     }
 }
