@@ -277,7 +277,7 @@ function abrirAdmin(e) {
 
 function cerrarAdmin() {
     const modal = document.getElementById('modal-login-admin');
-    if (modal) modal.classList.add('oculto');
+    if (modal) modal.classList.remove('oculto');
 }
 
 function validarAccesoAdmin() {
