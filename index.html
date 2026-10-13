@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTELA | Boutique Femenina</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de Font Awesome para Redes Sociales y WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- SPLASH SCREEN DE CARGA -->
+    <div id="splash-screen">
+        <div class="splash-contenido">
+            <img src="logo.jpg" alt="ESTELA Logo" class="splash-logo" onerror="this.src='https://via.placeholder.com/120?text=ESTELA'">
+            <h1 class="splash-titulo">ESTELA</h1>
+            <p class="splash-subtitulo">Boutique Femenina</p>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="contenido-principal" class="oculto">
+
+        <!-- CABECERA PRINCIPAL -->
+        <header class="cabecera">
+            <div class="cabecera-top">
+                <div class="brand">
+                    <img src="logo.jpg" alt="Logo ESTELA" class="header-logo" onerror="this.src='https://via.placeholder.com/50?text=E'">
+                    <div>
+                        <h1 class="logo-texto">ESTELA</h1>
+                        <span class="slogan">Boutique Femenina</span>
+                    </div>
+                </div>
+                <button class="btn-carrito-header" onclick="abrirCarrito(event)">
+                    🛒 <span id="contador-carrito">0</span>
+                </button>
+            </div>
+
+            <!-- FILTROS POR CATEGORÍA -->
+            <div class="contenedor-filtros">
+                <button class="btn-filtro activo" onclick="filtrarProductos('todos', event)">Todos</button>
+                <button class="btn-filtro" onclick="filtrarProductos('blusas', event)">Blusas</button>
+                <button class="btn-filtro" onclick="filtrarProductos('vestidos', event)">Vestidos</button>
+                <button class="btn-filtro" onclick="filtrarProductos('pantalones', event)">Pantalones</button>
+                <button class="btn-filtro" onclick="filtrarProductos('conjuntos', event)">Conjuntos</button>
+                <button class="btn-filtro" onclick="filtrarProductos('ofertas', event)">Ofertas</button>
+            </div>
+        </header>
+
+        <!-- CATÁLOGO DE PRODUCTOS -->
+        <main class="contenedor-principal">
+            <h2 class="titulo-seccion">Catálogo Exclusivo</h2>
+            <div class="catalogo-grid">
+                <!-- Se llena dinámicamente desde Google Sheets -->
+            </div>
+        </main>
+
+        <!-- WHATSAPP FLOTANTE CON ÍCONO OFICIAL -->
+        <div class="whatsapp-flotante-contenedor">
+            <div id="menu-whatsapp" class="menu-whatsapp oculto">
+                <button onclick="enviarWhatsApp('comprar')">🛍 Realizar una Compra</button>
+                <button onclick="enviarWhatsApp('consultar')">❓ Hacer una Consulta</button>
+            </div>
+            <button id="boton-whatsapp" class="btn-whatsapp" title="Contactar por WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </button>
+        </div>
+
+        <!-- MODAL CARRITO DE COMPRAS -->
+        <div id="modal-carrito" class="modal oculto">
+            <div class="modal-contenido">
+                <button class="btn-cerrar" onclick="cerrarCarrito()">&times;</button>
+                <h2>Tu Carrito de Compras</h2>
+                <div id="lista-carrito" class="lista-carrito">
+                    <p style="color:#777; text-align:center;">Tu carrito está vacío.</p>
+                </div>
+                <div class="total-contenedor">
+                    <span>Total a Pagar:</span>
+                    <strong id="total-precio">$0.00</strong>
+                </div>
+
+                <div class="formulario-cliente">
+                    <h3>Datos para el Pedido</h3>
+                    <input type="text" id="cliente-nombre" placeholder="Nombre *" required>
+                    <input type="text" id="cliente-apellido" placeholder="Apellido *" required>
+                    <input type="tel" id="cliente-celular" placeholder="Celular / WhatsApp *" required>
+                </div>
+
+                <button class="btn-confirmar-compra" onclick="procesarCompra()">
+                    📲 Enviar Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+
+        <!-- MODAL PERFIL Y REDES SOCIALES -->
+        <div id="modal-perfil" class="modal oculto">
+            <div class="modal-contenido modal-perfil-box">
+                <button class="btn-cerrar" onclick="cerrarPerfil()">&times;</button>
+                
+                <!-- Cabecera del Perfil con Logo a la izquierda -->
+                <div class="perfil-header">
+                    <img src="logo.jpg" alt="Logo ESTELA" class="perfil-logo" onerror="this.src='https://via.placeholder.com/100?text=ESTELA'">
+                    <div class="perfil-info-tienda">
+                        <h2>ESTELA</h2>
+                        <p>Boutique Femenina</p>
+                    </div>
+                </div>
+
+                <hr class="divisor-perfil">
+
+                <!-- Sección de Redes Sociales con Íconos Oficiales -->
+                <div class="perfil-redes">
+                    <h3>Síguenos en nuestras redes</h3>
+                    <p>Pasa a ver las últimas tendencias y promociones:</p>
+
+                    <div class="lista-redes">
+                     
+
+                        <!-- Instagram -->
+                        <a href="AQUI_TU_LINK_INSTAGRAM" target="_blank" class="red-item instagram">
+                            <i class="fa-brands fa-instagram red-icono"></i>
+                            <span class="red-nombre">Instagram</span>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="AQUI_TU_LINK_FACEBOOK" target="_blank" class="red-item facebook">
+                            <i class="fa-brands fa-facebook red-icono"></i>
+                            <span class="red-nombre">Facebook</span>
+                        </a>
+
+                        <!-- TikTok -->
+                        <a href="AQUI_TU_LINK_TIKTOK" target="_blank" class="red-item tiktok">
+                            <i class="fa-brands fa-tiktok red-icono"></i>
+                            <span class="red-nombre">TikTok</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL LOGIN ADMIN -->
+        <div id="modal-login-admin" class="modal oculto">
+            <div class="modal-contenido">
+                <button class="btn-cerrar" onclick="cerrarAdmin()">&times;</button>
+                <h2>Acceso Administrativo</h2>
+                <p>Ingresa la contraseña de la tienda para acceder al panel:</p>
+                <input type="password" id="clave-admin" placeholder="Contraseña Admin">
+                <button class="btn-confirmar-compra" onclick="validarAccesoAdmin()">Ingresar</button>
+            </div>
+        </div>
+
+        <!-- PANEL ADMINISTRATIVO EN TIENDA -->
+        <section id="panel-admin" class="panel-admin oculto">
+            <div class="admin-header">
+                <h2>⚙️ Panel de Control - Caja Física</h2>
+                <button class="btn-cerrar-panel" onclick="document.getElementById('panel-admin').classList.add('oculto')">Cerrar Panel</button>
+            </div>
+            <p>Registra las ventas realizadas directamente en el local:</p>
+            <button class="btn-registrar-venta" onclick="registrarVentaFisica()">➕ Registrar Venta Física</button>
+            <div id="historial-ventas-fisicas" class="historial-ventas"></div>
+        </section>
+
+    </div>
+
+    <!-- NAVEGACIÓN INFERIOR (Solo Catálogo, Carrito y Perfil) -->
+    <nav id="navegacion" class="nav-inferior oculto">
+        <button class="nav-item activo" onclick="filtrarProductos('todos', event)">
+            <span class="nav-icono">👗</span>
+            <span class="nav-texto">Catálogo</span>
+        </button>
+        <button class="nav-item" onclick="abrirCarrito(event)">
+            <span class="nav-icono">🛒</span>
+            <span class="nav-texto">Carrito</span>
+        </button>
+        <button class="nav-item" onclick="abrirPerfil(event)">
+            <span class="nav-icono">👤</span>
+            <span class="nav-texto">Perfil</span>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
