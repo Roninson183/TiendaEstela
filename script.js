@@ -266,6 +266,14 @@ function cerrarPerfil() {
     if (modal) modal.classList.add('oculto');
 }
 
+function toggleFacebookMenu(e) {
+    if (e) e.stopPropagation();
+    const menuFB = document.getElementById('menu-facebook-opciones');
+    if (menuFB) {
+        menuFB.classList.toggle('oculto');
+    }
+}
+
 // 6. PANEL ADMINISTRATIVO
 const CLAVE_CORRECTA = "Estela2026";
 
