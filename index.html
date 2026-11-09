@@ -44,6 +44,14 @@
             <!-- FILTROS POR CATEGORÍA -->
             <div class="contenedor-filtros">
                 <button class="btn-filtro activo" onclick="filtrarProductos('todos', event)">Todos</button>
+                <!-- NUEVO: BOTÓN ESTELAR (NOVEDADES) -->
+                <button class="btn-filtro btn-estelar" onclick="filtrarProductos('novedades', event)">
+                    <span class="estrella e1">✦</span>
+                    <span class="estrella e2">✦</span>
+                    <span class="estrella e3">✦</span>
+                    ✨ Novedades
+                </button>
+                <!-- FIN NUEVO -->
                 <button class="btn-filtro" onclick="filtrarProductos('blusas', event)">Blusas</button>
                 <button class="btn-filtro" onclick="filtrarProductos('vestidos', event)">Vestidos</button>
                 <button class="btn-filtro" onclick="filtrarProductos('pantalones', event)">Pantalones</button>
