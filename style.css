@@ -99,7 +99,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid var(--color-gris-suave);
+    border-bottom: 1px solid var(--color-negro-suave);
 }
 
 .brand {
@@ -130,7 +130,7 @@ body {
 }
 
 .btn-carrito-header {
-    background: var(--color-gris-suave);
+    background: var(--color-negro-suave);
     border: none;
     padding: 8px 14px;
     border-radius: 20px;
@@ -154,7 +154,7 @@ body {
 }
 
 .btn-filtro {
-    background-color: var(--color-gris-suave);
+    background-color: var(--color-negro-suave);
     border: 1px solid transparent;
     padding: 8px 18px;
     border-radius: 25px;
